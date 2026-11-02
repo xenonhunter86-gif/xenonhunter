@@ -58,7 +58,7 @@
 
   <header>
     <div class="brand">
-      <img src="logo.png" alt="Logo"> XENON HUNTER
+      <img src="logo.png.png" alt="Logo"> XENON HUNTER
     </div>
     <button class="nav-btn" onclick="openLoginModal()">Member Login</button>
   </header>
@@ -82,7 +82,7 @@
       <!-- 1. Owner -->
       <div class="member-card">
         <span class="member-badge">OWNER</span>
-        <div class="member-img-box"><img src="owner.png" alt="Owner"></div>
+        <div class="member-img-box"><img src="owner.png.png" alt="Owner"></div>
         <h3>Md Jehad Khan</h3>
         <p class="role">Team Owner (IGN: Bladi GMB)</p>
         <div class="info-list">
@@ -94,7 +94,7 @@
       <!-- 2. Sabbir -->
       <div class="member-card">
         <span class="member-badge">LEAD</span>
-        <div class="member-img-box"><img src="sabbir.png" alt="Sabbir"></div>
+        <div class="member-img-box"><img src="sabbir.png.png" alt="Sabbir"></div>
         <h3>Sabbir Hossain</h3>
         <p class="role">Sniper & IGL</p>
         <div class="info-list">
@@ -106,7 +106,7 @@
       <!-- 3. Arafat -->
       <div class="member-card">
         <span class="member-badge">PLAYER</span>
-        <div class="member-img-box"><img src="arafat.png" alt="Arafat"></div>
+        <div class="member-img-box"><img src="arafat.png.png" alt="Arafat"></div>
         <h3>Md Arafat Alamin</h3>
         <p class="role">1st Russer</p>
         <div class="info-list">
@@ -117,7 +117,7 @@
       <!-- 4. Mustafizur -->
       <div class="member-card">
         <span class="member-badge">PLAYER</span>
-        <div class="member-img-box"><img src="mustafiz.png" alt="Mustafizur"></div>
+        <div class="member-img-box"><img src="mustafiz.png.png" alt="Mustafizur"></div>
         <h3>Md Mustafizur Rahman</h3>
         <p class="role">2nd Russer</p>
         <div class="info-list">
@@ -128,7 +128,7 @@
       <!-- 5. Sopon -->
       <div class="member-card">
         <span class="member-badge">PLAYER</span>
-        <div class="member-img-box"><img src="sopon.png" alt="Sopon"></div>
+        <div class="member-img-box"><img src="sopon.png.png" alt="Sopon"></div>
         <h3>Md Sopon</h3>
         <p class="role">Bomber</p>
         <div class="info-list">
@@ -157,54 +157,3 @@
         <label>Enter PIN (Default: 1234)</label>
         <input type="password" id="passInput" placeholder="Enter PIN">
       </div>
-      <button class="submit-btn" onclick="handleLogin()">Login Dashboard</button>
-    </div>
-  </div>
-
-  <div class="modal-overlay" id="dashboardModal">
-    <div class="modal-card">
-      <span class="close-btn" onclick="closeModal('dashboardModal')">&times;</span>
-      <h2 id="welcomeText">Welcome</h2>
-      <div class="wallet-box">
-        <h4>Wallet Balance</h4>
-        <div class="amount">৳ <span id="userBalance">2500</span></div>
-      </div>
-      <div class="input-group">
-        <label>bKash Number</label>
-        <input type="text" id="bkashNumber" placeholder="017XXXXXXXX">
-      </div>
-      <div class="input-group">
-        <label>Amount (TK)</label>
-        <input type="number" id="withdrawAmount" placeholder="e.g. 500">
-      </div>
-      <button class="submit-btn" style="background:#e11d48; color:#fff;" onclick="handleWithdraw()">Request bKash Payout</button>
-    </div>
-  </div>
-
-  <script>
-    let currentMember = null;
-    let balances = { 1: 10000, 2: 4500, 3: 3500, 4: 3500, 5: 3000 };
-    const memberNames = { 1: "Md Jehad Khan", 2: "Sabbir Hossain", 3: "Md Arafat Alamin", 4: "Md Mustafizur Rahman", 5: "Md Sopon" };
-
-    function openLoginModal() { document.getElementById('loginModal').style.display = 'flex'; }
-    function closeModal(id) { document.getElementById(id).style.display = 'none'; }
-    function handleLogin() {
-      if(document.getElementById('passInput').value === "1234") {
-        currentMember = document.getElementById('memberSelect').value;
-        closeModal('loginModal');
-        document.getElementById('welcomeText').innerText = memberNames[currentMember];
-        document.getElementById('userBalance').innerText = balances[currentMember];
-        document.getElementById('dashboardModal').style.display = 'flex';
-      } else { alert("Wrong PIN! Use 1234"); }
-    }
-    function handleWithdraw() {
-      const num = document.getElementById('bkashNumber').value;
-      const amt = parseInt(document.getElementById('withdrawAmount').value);
-      if(!num || num.length < 11 || !amt || amt > balances[currentMember]) { alert("Invalid details or insufficient balance!"); return; }
-      balances[currentMember] -= amt;
-      document.getElementById('userBalance').innerText = balances[currentMember];
-      alert(`Withdrawal of ৳${amt} successful!`);
-    }
-  </script>
-</body>
-</html>
